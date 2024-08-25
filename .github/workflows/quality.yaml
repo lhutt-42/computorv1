@@ -31,3 +31,13 @@ jobs:
 
     - name: "Format"
       run: cargo fmt --check --verbose
+
+
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: "Check"
+      run: cargo test --verbose
