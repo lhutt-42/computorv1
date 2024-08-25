@@ -1,0 +1,18 @@
+{
+    "version": "0.2",
+    "ignorePaths": [
+        "cspell.json",
+        ".git/**",
+        ".gitignore",
+        ".github/workflows/*",
+        "Cargo.toml",
+        "assets/"
+    ],
+    "dictionaryDefinitions": [],
+    "dictionaries": [],
+    "words": [
+        "computorv1"
+    ],
+    "ignoreWords": [],
+    "import": []
+}
