@@ -1,7 +1,10 @@
-name: Code Quality
+name: "Code Quality"
 
 on:
   push:
+
+env:
+  CARGO_TERM_COLOR: always
 
 permissions:
   contents: read
@@ -18,3 +21,13 @@ jobs:
       uses: streetsidesoftware/cspell-action@v6
       with:
         incremental_files_only: false
+
+
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: "Format"
+      run: cargo fmt --check --verbose
