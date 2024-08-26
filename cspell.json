@@ -12,7 +12,8 @@
     "dictionaryDefinitions": [],
     "dictionaries": [],
     "words": [
-        "computorv1"
+        "computorv1",
+        "peekable"
     ],
     "ignoreWords": [],
     "import": []
