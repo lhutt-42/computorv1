@@ -1,19 +1,4 @@
-use super::token::Token;
-
-#[derive(Debug, PartialEq)]
-pub enum AbstractSyntaxTreeNode {
-    Number(f64),
-    Variable(char),
-    BinaryOp {
-        left: Box<AbstractSyntaxTreeNode>,
-        op: Token,
-        right: Box<AbstractSyntaxTreeNode>,
-    },
-    Equation {
-        left: Box<AbstractSyntaxTreeNode>,
-        right: Box<AbstractSyntaxTreeNode>,
-    },
-}
+use super::{node::AbstractSyntaxTreeNode, token::Token};
 
 #[derive(Debug)]
 pub struct AbstractSyntaxTree {
