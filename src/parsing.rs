@@ -1,8 +1,9 @@
 mod ast;
-mod tokenize;
+mod node;
+mod token;
 
 use ast::AbstractSyntaxTree;
-use tokenize::{tokenize, Token};
+use token::{tokenize, Token};
 
 pub fn parse() {
     let env: Vec<String> = std::env::args().collect();
@@ -14,14 +15,10 @@ pub fn parse() {
 
     let expression: &str = &env[1];
 
-    // Filter out whitespace tokens
-    let tokens: Vec<Token> = tokenize(expression)
-        .into_iter()
-        .filter(|token| *token != Token::Whitespace)
-        .collect::<Vec<Token>>();
+    let tokens: Vec<Token> = tokenize(expression);
 
     let mut ast = AbstractSyntaxTree::new(tokens);
     let nodes = ast.parse();
 
-    println!("AST: {:#?}", nodes);
+    println!("{:?}", nodes);
 }

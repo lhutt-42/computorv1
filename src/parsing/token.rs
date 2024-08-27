@@ -38,7 +38,7 @@ pub fn tokenize(expression: &str) -> Vec<Token> {
                 }
             }
 
-            c if c.is_alphabetic() => {
+            'X' => {
                 chars.next();
                 tokens.push(Token::Variable(c));
             }
@@ -74,5 +74,36 @@ pub fn tokenize(expression: &str) -> Vec<Token> {
         }
     }
 
-    tokens
+    standardize(tokens)
+}
+
+fn standardize(tokens: Vec<Token>) -> Vec<Token> {
+    let mut standardized_tokens = Vec::new();
+    let mut tokens_iter = tokens.into_iter().peekable();
+
+    while let Some(token) = tokens_iter.next() {
+        match token {
+            Token::Variable(_) => {
+                standardized_tokens.push(token);
+
+                match tokens_iter.peek() {
+                    Some(Token::Exponent) => {
+                        standardized_tokens.push(tokens_iter.next().unwrap());
+                    }
+                    _ => {
+                        standardized_tokens.push(Token::Exponent);
+                        standardized_tokens.push(Token::Number(1.0));
+                    }
+                }
+            }
+            Token::Whitespace => {
+                continue;
+            }
+            _ => {
+                standardized_tokens.push(token);
+            }
+        }
+    }
+
+    standardized_tokens
 }
