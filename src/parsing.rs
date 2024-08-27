@@ -8,7 +8,7 @@ use ast::AbstractSyntaxTree;
 use node::AbstractSyntaxTreeNode;
 use token::{tokenize, Token};
 
-pub fn parse() {
+pub fn parse() -> BTreeMap<u32, f64> {
     let env: Vec<String> = std::env::args().collect();
 
     if env.len() != 2 {
@@ -42,9 +42,5 @@ pub fn parse() {
         }
     };
 
-    println!("Coefficients: {:?}", coefficients);
-    println!(
-        "Polynomial degree: {}",
-        coefficients.keys().max().unwrap_or(&0)
-    );
+    coefficients
 }
