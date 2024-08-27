@@ -12,7 +12,9 @@
     "dictionaryDefinitions": [],
     "dictionaries": [],
     "words": [
-        "computorv1"
+        "computorv1",
+        "peekable",
+        "fract"
     ],
     "ignoreWords": [],
     "import": []
