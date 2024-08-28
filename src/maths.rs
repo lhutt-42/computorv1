@@ -1,8 +1,10 @@
-pub mod complex;
+mod complex;
 pub mod format;
+mod fraction;
 mod sqrt;
 
 use complex::Complex;
+use fraction::{ComplexFraction, Fraction};
 use sqrt::sqrt;
 use std::collections::BTreeMap;
 
@@ -43,7 +45,7 @@ fn solve_degree_1(a: f64, b: f64) {
     let x = -a / b;
 
     println!("The solution is:");
-    println!("{:.6}", x);
+    println!("{:.6} \u{2248} {}", x, Fraction::from_float(x, None));
 }
 
 fn solve_degree_2(a: f64, b: f64, c: f64) {
@@ -63,14 +65,15 @@ fn solve_degree_2(a: f64, b: f64, c: f64) {
             let x2 = (-b + sqrt_discriminant) / (2.0 * c);
 
             println!("Discriminant is strictly positive, the two solutions are:");
-            println!("{:.6}\n{:.6}", x1, x2);
+            println!("{:.6} \u{2248} {}", x1, Fraction::from_float(x1, None));
+            println!("{:.6} \u{2248} {}", x2, Fraction::from_float(x2, None));
         }
 
         0.0 => {
             let x = -b / (2.0 * c);
 
             println!("Discriminant is zero, the solution is:");
-            println!("{:.6}", x);
+            println!("{:.6} \u{2248} {}", x, Fraction::from_float(x, None));
         }
 
         _ => {
@@ -82,7 +85,16 @@ fn solve_degree_2(a: f64, b: f64, c: f64) {
             let x2 = Complex::new(real_part, -imaginary_part);
 
             println!("Discriminant is strictly negative, the two solutions are:");
-            println!("{:.6}\n{:.6}", x1, x2);
+            println!(
+                "{:.6} \u{2248} {}",
+                x1,
+                ComplexFraction::from_complex(&x1, None)
+            );
+            println!(
+                "{:.6} \u{2248} {}",
+                x2,
+                ComplexFraction::from_complex(&x2, None)
+            );
         }
     }
 }
