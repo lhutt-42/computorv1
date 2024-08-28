@@ -26,3 +26,9 @@ The solver will then output the roots of the equation.
 ## Subject
 
 [The subject can be found here.](/assets/subject.pdf)
+
+
+## Acknowledgements
+
+This project is part of the 42 School curriculum.
+Special thanks to the 42 School community for their support and resources.
