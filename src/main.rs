@@ -11,8 +11,5 @@ fn main() {
     );
     println!("Polynomial degree: {}", degree);
 
-    if *degree > 2 {
-        eprintln!("The polynomial degree is strictly greater than 2, I can't solve.");
-        std::process::exit(1);
-    }
+    maths::solve_polynomial(*degree, coefficients);
 }
