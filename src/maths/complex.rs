@@ -2,8 +2,8 @@ use std::fmt;
 
 #[derive(Debug)]
 pub struct Complex {
-    real: f64,
-    imaginary: f64,
+    pub real: f64,
+    pub imaginary: f64,
 }
 
 impl Complex {
@@ -14,18 +14,14 @@ impl Complex {
 
 impl fmt::Display for Complex {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let format = match (self.real, self.imaginary) {
-            (0.0, 0.0) => format!("0"),
-            (0.0, _) => format!("{}i", self.imaginary),
-            (_, 0.0) => format!("{}", self.real),
-            (_, _) => {
-                if self.imaginary < 0.0 {
-                    format!("{} - {}i", self.real, -self.imaginary.abs())
-                } else {
-                    format!("{} + {}i", self.real, self.imaginary.abs())
-                }
-            }
+        let sign = match self.imaginary.is_sign_positive() {
+            true => "+",
+            false => "-",
         };
-        write!(f, "{}", format)
+
+        let real_str = format!("{:.1$}", self.real, f.precision().unwrap_or(10));
+        let imaginary_str = format!("{:.1$}", self.imaginary.abs(), f.precision().unwrap_or(10));
+
+        write!(f, "{} {} {}i", real_str, sign, imaginary_str)
     }
 }
