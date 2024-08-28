@@ -21,3 +21,8 @@ To use computorv1, run the compiled binary and input your equation:
 ```
 
 The solver will then output the roots of the equation.
+
+
+## Subject
+
+[The subject can be found here.](/assets/subject.pdf)
