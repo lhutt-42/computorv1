@@ -1,4 +1,4 @@
-NAME := target/debug/computorv1
+NAME := target/debug/computor
 
 $(NAME):
 	cargo build

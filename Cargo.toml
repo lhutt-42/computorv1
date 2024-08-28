@@ -1,6 +1,6 @@
 [package]
-name = "computorv1"
-version = "0.1.0"
+name = "computor"
+version = "1.0.0"
 edition = "2021"
 
 [dependencies]
